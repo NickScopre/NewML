@@ -7,8 +7,6 @@ class LinearDataGenerator:
         self.features = features
         self.noise = noise
 
-
-    # This section needs work, maybe a rewrite, but the data doesn't have a linearly relationship between features.
     # Generate a dataset of linearly related features
     def gen_linear_data(self):
         data = np.zeros(dtype=float, shape=(self.features, self.points))
