@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 
-from ScopreML.datagen import DataGenerator
+from datagen import DataGenerator
 
 from LinearRegression.linear_regression import LinearRegressionModel
 
