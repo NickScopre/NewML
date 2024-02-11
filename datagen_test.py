@@ -17,7 +17,7 @@ df = DG.gen_linear_data(points=POINTS, features=FEATURES, noise=NOISE)
 x_range = np.linspace(0, POINTS, num=POINTS)
 
 fig, axs = plt.subplots(nrows=FIGURE_ROWS, ncols=FIGURE_COLS, sharex=True, sharey=True)
-plt.subplots_adjust(left=0.05, right=0.99, top=0.95, bottom=0.05)  # Adjust padding as needed
+plt.subplots_adjust(left=0.05, right=0.99, top=0.95, bottom=0.05) 
 
 # Plot each feature against the common x_range
 for feature_name in df.columns:
