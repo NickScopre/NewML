@@ -26,14 +26,14 @@ class LinearRegressionModel:
 
         # Target
         if(isinstance(target, pd.Series)):
-            # input is a series
-            self.X = target.values
+            # target is a series
+            self.y = target.values
         elif(isinstance(target, np.ndarray)):
-            # input is a ndarray
-            self.X = target
+            # target is a ndarray
+            self.y = target
         elif(isinstance(target, list)):
-            # input is a python list
-            self.X = np.array(target)
+            # target is a python list
+            self.y = np.array(target)
         else:
             # input is invalid
             raise TypeError("Target Values must be a Pandas Series, Numpy 1D Array, or Python List.")
@@ -47,17 +47,36 @@ class LinearRegressionModel:
             # Use batch gradient descent, learning rate, and number of iterations
 
 
-            # Gradient Descent
-                # Compute Predicted Values
-                # Check for Convergeance
-                # Calculate Gradient of Cost
-                # Update Weights
+            ## Gradient Descent ##
+            # Compute Predicted Values
+            # Check for Convergeance
+            # Calculate Gradient of Cost
+            # Update Weights
 
             return self.weights
 
         else:
-            # Compute Optimal coeffiecients regardless of number of iterations
-            pass
+            ## Compute Optimal Coefficients ##
+            # Transpose: X.T
+            # Mat Mult: @
+            # Inverse: np.linalg.inv()
+
+            # Ensure full rank, otherwise matrix has linearly dependent columns and is singular
+            """
+            A Matrix is invertible iff it is full rank,
+            such that it has a nonzero values along the diagonal.
+            Given that the input matrix is MxN, X_T @ X will be NxN
+            Upon performing SVD, the matrix of singular values (Sigma) must have a 
+            nonzero value for every element on the diagonal
+            """
+            singular_values = np.linalg.svd(self.X, compute_uv=False)
+            for i in range(num_features):
+                if singular_values[i][i] == 0:
+                    
+
+            # Compute coefficients via least squares solution
+            self.weights = np.linalg.inv(self.X.T @ self.X) @ self.X.T @ self.y
+            return self.weights
 
 
     def predict(self, input, target):
