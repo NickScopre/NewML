@@ -13,7 +13,6 @@ FIGURE_COLS = 1
 NOISE = 0.25
 
 mpl.rcParams['figure.figsize'] = [10.0, 6.0]
-#x_range = np.linspace(0, POINTS, num=POINTS)
 
 DG = DataGenerator()
 df = DG.gen_linear_data(points=POINTS, features=FEATURES, noise=NOISE)
@@ -33,12 +32,12 @@ plt.subplots_adjust(left=0.05, right=0.99, top=0.95, bottom=0.05)
 
 # Plot each feature against the common x_range
 for feature_name in df.columns:
-    axs.scatter(df.index, df[feature_name], label=feature_name, s=25, alpha=0.5, marker='o', edgecolor='none')
+    axs.scatter(df.index, df[feature_name], label="Feature " + str(feature_name), s=25, alpha=0.5, marker='o', edgecolor='none')
 #_nolegend_
 axs.set_xlabel('Point')
 axs.set_ylabel('Feature Value')
 axs.set_title('Generated Data')
 
-plt.plot(df.index, y_pred, color='red', marker='x', linestyle='-', label='Perfect Fit')
+plt.plot(df.index, y_pred, color='red', marker='', linestyle='-', alpha=0.5, label='Perfect Fit')
 plt.legend()
 plt.show()
