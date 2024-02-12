@@ -60,12 +60,9 @@ class LinearRegressionModel:
 
             # Compute coefficients via least squares solution
             self.weights = np.linalg.inv(self.X.T @ self.X) @ self.X.T @ self.y
-            print(self.weights.shape)
-            print(self.X.shape)
             return self.weights
 
 
     def predict(self, input):
         y_pred = np.dot(input, self.weights)
-        print(y_pred.shape)
         return y_pred
